@@ -15,23 +15,39 @@ html(lang="en")
     .reveal
       .slides
         +titleSlide(titleData)
-        +ulSlide("Get Started", [
-          "npm install -g bower grunt",
-          "npm install",
-          "bower install",
-          "grunt serve",
-          "go to localhost:8000/example/"
-          ])
-        +bigTitleSlide("I am a big title slide")
-          p Enjoy
-        +slide()
-          p This is a normal Slide. Just nest jade under me
-        +slideGroup()
-          +bigTitleSlide("First Slide in a group")
-          +bigTitleSlide("Last Slide in a group")
-        +slide
+        +bigTitleSlide("Goals")
           :markdown
-            # Markdown flavored Slide
-            ## Thank you Jade
+            - Understand repositories
+            - Time travel is hard, Git is easy
+            - Git tools and commands
+            - Working with others (Merging)
+            - Avoiding conflicts
+
+        +bigTitleSlide("You are going to be great at Git")
+        +imageSlide("What did you just say?", "images/surprise.jpg")
+        +slideGroup
+          +bigTitleSlide("Installing Git")
+            :markdown
+              - Windows - https://git-scm.com/download/win
+              - OSX - Built-in
+              - Linux - through your package manager if not built-in
+
+          +bigTitleSlide("")
+
+        +slideGroup
+          +bigTitleSlide("Repositories")
+
+        +slideGroup
+          +bigTitleSlide("Time Travel")
+
+        +slideGroup
+          +bigTitleSlide("Tools")
+
+        +slideGroup
+          +bigTitleSlide("Collaboration")
+
+        +slideGroup
+          +bigTitleSlide("Avoiding Conflicts")
+
 
     include ./shared/footer
