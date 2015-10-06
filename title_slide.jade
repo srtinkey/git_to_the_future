@@ -1,0 +1,13 @@
+mixin titleSlide(titleData, attrs)
+  +slide(attrs)
+    h1(style='font-family: back_to_the_future_2002Rg; text-transform: capitalize;')= titleData.title
+    h3(style='font-family: back_to_the_future_2002Rg; text-transform: capitalize;')= titleData.subtitle
+    p(style='font-family: back_to_the_future_2002Rg')
+      div.left
+        small= titleData.author
+      div.left
+        small.twitter= titleData.twitter
+      div.left
+        small.email= titleData.email
+    aside.notes
+      | Title Slide
