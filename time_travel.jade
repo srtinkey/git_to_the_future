@@ -1,0 +1,46 @@
+include ./shared/slide_mixins
+
++slideGroup
+  +imageSlide("Time Travel", "images/time-machine-reading-1.png")
+  +littleTitleSlide("How do we observe time in git?")
+    include:markdown code/log.md
+    :markdown
+      Command: __git log__
+
+  +imageSlide("Lets take another look", "images/git_commit.png")
+    :markdown
+      by xkcd
+
+  +littleTitleSlide("Give a hoot, don't pollute")
+    :markdown
+      #### Your master branch
+      - Start all work on a new branch
+      - Name your branch the big picture of the work it will contain
+      - Keep your work on topic
+
+      Command: __git checkout -b my_feature__
+
+  +littleTitleSlide("Add some commits")
+    :markdown
+      #### On your feature branch
+      - Add a new file called 'first_file.txt' and put some text in it
+      - Stage the file
+      - Create a commit with the staged files
+
+      Command: __git add first_file.txt__
+
+      Command: __git commit -m"Added first_file"__
+
+  +bigTitleSlide("Congratulations master of time")
+
+  +bigTitleSlide("Changing Branches")
+    :markdown
+      Branches represent alternative histories
+
+      Command: __git branch__
+
+    include:markdown code/listing_branches.md
+    :markdown
+      Command: __git checkout &lt;branch name&gt;__
+
+    include:markdown code/changing_branches.md
