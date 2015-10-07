@@ -18,27 +18,126 @@ html(lang="en")
         +bigTitleSlide("Goals")
           :markdown
             - Understand repositories
-            - Time travel is hard, Git is easy
+            - Time travel is hard, Git makes it easy
             - Git tools and commands
             - Working with others (Merging)
             - Avoiding conflicts
 
         +bigTitleSlide("You are going to be great at Git")
-        +imageSlide("What did you just say?", "images/surprise.jpg")
-        +slideGroup
-          +bigTitleSlide("Installing Git")
+          :markdown
+            How do you get to Carnegie Hall?
+
+        +bigTitleSlide("Installing Git")
             :markdown
               - Windows - https://git-scm.com/download/win
               - OSX - Built-in
               - Linux - through your package manager if not built-in
 
-          +bigTitleSlide("")
+        +slideGroup
+          +bigTitleSlide("Spite driven development")
+            :markdown
+              ### A story as old as time
+
+          +bigTitleSlide("Git features")
+            :markdown
+              - Speed
+              - Simple design
+              - Strong support for non-linear development (thousands of parallel branches)
+              - Fully distributed
+              - Able to handle large projects like the Linux kernel efficiently (speed and data size)
+
+            +speakerNotes
+              :markdown
+                The Linux kernel is an open source software project of fairly large scope. For most of the lifetime of the Linux kernel maintenance (1991–2002), changes to the software were passed around as patches and archived files. In 2002, the Linux kernel project began using a proprietary DVCS called BitKeeper.
+                In 2005, the relationship between the community that developed the Linux kernel and the commercial company that developed BitKeeper broke down, and the tool’s free-of-charge status was revoked. This prompted the Linux development community (and in particular Linus Torvalds, the creator of Linux) to develop their own tool based on some of the lessons they learned while using BitKeeper. Some of the goals of the new system were as follows:
+
+          +littleTitleSlide("Since its birth in 2005, Git has evolved and matured to be easy to use and yet retain these initial qualities. ")
+
+          +imageSlide("Wait did you say EASY?", "images/surprise.jpg")
+
+          +bigTitleSlide("Take it one step at a time")
 
         +slideGroup
           +bigTitleSlide("Repositories")
+            :markdown
+              Your own small universe
+
+              Command: __git init__
+
+            +speakerNotes
+              :markdown
+                What goes in your universe. Time and History. Lives and the changes they undergo
+
+          +imageSlide("What is this distributed thing?", "images/distributed-version-control-system-white.png")
+
+          +bigTitleSlide("Vocabulary")
+            :markdown
+              - Push
+              - Pull
+              - Local
+              - Remote
+              - Working Copy
+
+            +speakerNotes
+              :markdown
+                - Send your changes from Local to the Remote
+                - Bring the changes from Remote to the Local
+                - Your personal copy of the repo on your local machine
+                - Copy of your repo on a remote system (Many people share the same remote)
+                - Changes to your local repo you have not pushed yet
+
+          +bigTitleSlide("Staging")
+            :markdown
+              If our repo is a universe then major points in history are commits.
+              A point in history is when something changes.
+              What we stage becomes a commit and is added to the history.
+
+              Command: __git add &lt;file or directory&gt;__
+
+          +bigTitleSlide("Commit")
+            :markdown
+              Commits tell a story so they require a __message__ and a series of messages
+              makes a __history__
+
+              Command: __git commit -m"&lt;What you changed&gt;"
+
+          +littleTitleSlide("History")
+            :markdown
+              <video width="720" height="540" controls>
+                <source src="videos/gittothefuture.m4v" type="video/mp4">
+              Your browser does not support the video tag.
+              </video>
+
+          +bigTitleSlide("Branches")
+            :markdown
+              An infinite number of alternative 1985s
+
+              Our reality is called __master__
+
+              We can call other realities whatever you want
+
+              Command: __git checkout -b &lt;branch name&gt;__
+
+            +speakerNotes
+              :markdown
+                What are branches really. They are folders that you can switch between safely
+
+          +bigTitleSlide("Lets give it a try")
+            :markdown
+              <a target="_blank" href="https://try.github.io/levels/1/challenges/1">https://try.github.io</a>
 
         +slideGroup
           +bigTitleSlide("Time Travel")
+            :markdown
+              How do we observe time in git?
+
+              Command: __git log__
+
+          +bigTitleSlide("Branches")
+            :markdown
+              Branches represent alternative histories
+
+              Command: __git checkout &lt;branch name&gt;__
 
         +slideGroup
           +bigTitleSlide("Tools")
