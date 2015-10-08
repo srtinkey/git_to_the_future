@@ -19,3 +19,29 @@ include ./shared/slide_mixins
   +bigTitleSlide("Try It!")
 
   +bigTitleSlide("Existing Project")
+    :markdown
+      - Check to make sure your branch is in sync
+        - git fetch
+        - git status
+
+      If you see this you can move on
+
+    include:markdown code/up_to_date.md
+
+  +bigTitleSlide("Existing Project")
+    :markdown
+      If you didn't then we sync up
+
+    include:markdown code/ahead.md
+
+    include:markdown code/behind.md
+
+  +bigTitleSlide("Are all of your files committed")
+    include:markdown code/dirty_working_copy.md
+
+  +bigTitleSlide("Ahead?")
+    :markdown
+      You should push last time your worked (I am very disappointed)
+
+  +bigTitleSlide("Behind?")
+    :markdown
