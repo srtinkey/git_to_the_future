@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="author" content="Paul Scarrone">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.css">
+    <link id="theme" rel="stylesheet" href="bower_components/reveal.js/css/theme/moon.css">
+    <!-- For syntax highlighting-->
+    <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css">
+    <script src="//localhost:35729/livereload.js"></script>
+    <script>var revealLocation = 'bower_components/reveal.js/'</script>
+    <!--if lt IE 9
+    script(src= revealLocation + 'lib/js/html5shiv.js')
+    
+    -->
+    <script>
+      document.write( '<link rel="stylesheet" href="' + revealLocation + 'css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+      if(window.location.search.match( /print-pdf/gi )){
+        document.write('<style>.reveal aside.notes{display:block;font-size:0.4em;}.reveal aside.notes:before{content: "Notes: ";font-weight: bold;}</style>');
+      }
+    </script>
+  </head>
+  <link rel="external" type="text/html" src="./shared/head.jade">
+  <link rel="stylesheet" href="fonts/back-to-the-future-font/stylesheet.css">
+  <body>
+    <div class="reveal">
+      <div class="slides">
+            <section>
+              <h3></h3><img src="images/git-to-the-future-delorean-small.png">
+            </section>
+            <section>
+              <h1 style="font-family: back_to_the_future_2002Rg; text-transform: capitalize;"></h1>
+              <h3 style="font-family: back_to_the_future_2002Rg; text-transform: capitalize;"></h3>
+              <p style="font-family: back_to_the_future_2002Rg">
+                <div class="left"><small>Paul Scarrone</small></div>
+                <div class="left"><small class="twitter">@PaulSCoder</small></div>
+                <div class="left"><small class="email">paul.scarrone@gmail.com</small></div>
+              </p>
+              <aside class="notes">Title Slide</aside>
+            </section>
+            <section>
+              <h1>Goals</h1><ul>
+<li>Understand repositories</li>
+<li>Time travel is hard, Git makes it easy</li>
+<li>Git tools</li>
+<li>Working with others (Pull Requests)</li>
+<li>Avoiding conflicts</li>
+<li>Recipes</li>
+</ul>
+
+            </section>
+            <section>
+              <h1>You are going to be great at Git</h1><p>How do you get to Carnegie Hall?</p>
+
+            </section>
+            <section>
+              <h1>Installing Git</h1><ul>
+<li>Windows - <a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a></li>
+<li>OSX - Built-in (Xcode and Command Line Tools)</li>
+<li>Linux - through your package manager if not built-in</li>
+</ul>
+
+            </section>
+            <section>
+                  <section>
+                    <h1>Spite driven development</h1><h3 id="a-story-as-old-as-time">A story as old as time</h3>
+
+                  </section>
+                  <section>
+                    <h1>Git features</h1><ul>
+<li>Speed</li>
+<li>Simple design</li>
+<li>Strong support for non-linear development (thousands of parallel branches)</li>
+<li>Fully distributed</li>
+<li>Able to handle large projects like the Linux kernel efficiently (speed and data size)</li>
+</ul>
+
+                      <aside class="notes"><p>The Linux kernel is an open source software project of fairly large scope. For most of the lifetime of the Linux kernel maintenance (1991–2002), changes to the software were passed around as patches and archived files. In 2002, the Linux kernel project began using a proprietary DVCS called BitKeeper.
+In 2005, the relationship between the community that developed the Linux kernel and the commercial company that developed BitKeeper broke down, and the tool’s free-of-charge status was revoked. This prompted the Linux development community (and in particular Linus Torvalds, the creator of Linux) to develop their own tool based on some of the lessons they learned while using BitKeeper. Some of the goals of the new system were as follows:</p>
+
+                      </aside>
+                  </section>
+                  <section>
+                    <h3>Since its birth in 2005, Git has evolved and matured to be easy to use and yet retain these initial qualities. </h3>
+                  </section>
+                  <section>
+                    <h3>Wait did you say EASY?</h3><img src="images/surprise.jpg">
+                  </section>
+                  <section>
+                    <h1>Take it one step at a time</h1>
+                  </section>
+            </section>
+                        <section>
+                                          <section>
+                                            <h1>Repositories</h1><p>Your own small universe</p>
+<p>Command: <strong>git init</strong></p>
+
+                                                    <aside class="notes"><p>What goes in your universe. Time and History. Lives and the changes they undergo</p>
+
+                                                    </aside>
+                                          </section>
+                                          <section>
+                                            <h3>What is this distributed thing?</h3><img src="images/distributed-version-control-system-white.png">
+                                          </section>
+                                          <section>
+                                            <h1>Vocabulary</h1><ul>
+<li>Push</li>
+<li>Pull</li>
+<li>Local</li>
+<li>Remote</li>
+<li>Working Copy</li>
+</ul>
+
+                                                    <aside class="notes"><ul>
+<li>Send your changes from Local to the Remote</li>
+<li>Bring the changes from Remote to the Local</li>
+<li>Your personal copy of the repo on your local machine</li>
+<li>Copy of your repo on a remote system (Many people share the same remote)</li>
+<li>Changes to your local repo you have not pushed yet</li>
+</ul>
+
+                                                    </aside>
+                                          </section>
+                                          <section>
+                                            <h1>Staging</h1><p>If our repo is a universe then major points in history are commits.
+A point in history is when something changes.
+What we stage becomes a commit and is added to the history.</p>
+<p>Command: <strong>git add &lt;file or directory&gt;</strong></p>
+
+                                          </section>
+                                          <section>
+                                            <h3>Command</h3><h1 id="git-add-src-save-rb">git add src/save.rb</h1>
+
+                                          </section>
+                                          <section>
+                                            <h3>Common Command</h3><h1 id="git-add-">git add .</h1>
+
+                                          </section>
+                                          <section>
+                                            <h1>Commit</h1><p>Commits tell a story so they require a <strong>message</strong> and a series of messages
+makes a <strong>history</strong></p>
+<p>Command: <strong>git commit -m&quot;&lt;What you changed&gt;&quot;</strong></p>
+
+                                          </section>
+                                          <section>
+                                            <h3>Command</h3><h1 id="git-commit-m-added-awesome-feature-that-saved-mankind-">git commit -m&quot;Added awesome feature that saved mankind&quot;</h1>
+
+                                          </section>
+                                          <section>
+                                            <h3>History</h3><video width="720" height="540" controls>
+  <source src="videos/gittothefuture.m4v" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
+                                          </section>
+                                          <section>
+                                            <h1>Branches</h1><p>An infinite number of alternative 1985s</p>
+<p>Our reality is called <strong>master</strong></p>
+<p>We can create other realities whatever we want</p>
+<p>Command: <strong>git checkout -b &lt;branch name&gt;</strong></p>
+
+                                                    <aside class="notes"><p>What are branches really. They are folders that you can switch between safely</p>
+
+                                                    </aside>
+                                          </section>
+                                          <section>
+                                            <h3>Command</h3><h1 id="git-checkout-b-pks-save_world">git checkout -b pks/save_world</h1>
+
+                                          </section>
+                                          <section>
+                                            <h1>Lets give it a try</h1><p><a target="_blank" href="https://try.github.io/levels/1/challenges/1">https://try.github.io</a></p>
+
+                                          </section>
+                        </section>
+                        <section>
+                                          <section>
+                                            <h3>Time Travel</h3><img src="images/time-machine-reading-1.png">
+                                          </section>
+                                          <section>
+                                            <h3>How do we observe time in git?</h3><pre><code class="lang-git">commit bd139290f6efec5ca719e85e658d5c9a22d1ee37
+Author: Paul Scarrone &lt;ninjapanzer@gmail.com&gt;
+Date:   Tue Oct 6 22:13:36 2015 -0400
+
+    Basic repo description and commands
+
+commit ef3c55efc222d9857f7b6be84f96a3fce7e137eb
+Author: Paul Scarrone &lt;ninjapanzer@gmail.com&gt;
+Date:   Tue Oct 6 18:11:56 2015 -0400
+
+    Basic section organization
+
+commit 929717ccdc3977ae08a662853be9fa72131c2fd9
+Author: Paul Scarrone &lt;ninjapanzer@gmail.com&gt;
+Date:   Tue Oct 6 16:33:43 2015 -0400
+
+    git to the future slides initial
+</code></pre>
+<p>Command: <strong>git log</strong></p>
+
+                                          </section>
+                                          <section>
+                                            <h3>Command</h3><h1 id="git-log">git log</h1>
+
+                                          </section>
+                                          <section>
+                                            <h3>Lets take another look</h3><img src="images/git_commit.png"><p>by xkcd</p>
+
+                                          </section>
+                                          <section>
+                                            <h3>Give a hoot, don't pollute</h3><h4 id="your-master-branch">Your master branch</h4>
+<ul>
+<li>Start all work on a new branch</li>
+<li>Name your branch the big picture of the work it will contain</li>
+<li>Keep your work on topic</li>
+</ul>
+<p>Command: <strong>git checkout -b my_feature</strong></p>
+
+                                          </section>
+                                          <section>
+                                            <h3>Add some commits</h3><h4 id="on-your-feature-branch">On your feature branch</h4>
+<ul>
+<li>Add a new file called &#39;first_file.txt&#39; and put some text in it</li>
+<li>Stage the file</li>
+<li>Create a commit with the staged files</li>
+</ul>
+<p>Command: <strong>git add first_file.txt</strong></p>
+<p>Command: <strong>git commit -m&quot;Added first_file&quot;</strong></p>
+
+                                          </section>
+                                          <section>
+                                            <h1>Congratulations master of time</h1>
+                                          </section>
+                                          <section>
+                                            <h1>Changing Branches</h1><p>Branches represent alternate histories</p>
+<p>Command: <strong>git branch</strong></p>
+<pre><code>$ git branch
+* master
+  pks/alternate_1985
+</code></pre><p>Command: <strong>git checkout &lt;branch name&gt;</strong></p>
+<pre><code>$ git checkout pks/alternate_1985
+M   index.jade
+Switched to branch &#39;pks/alternate_1985&#39;
+</code></pre>
+                                          </section>
+                                          <section>
+                                            <h3>Command</h3><h1 id="git-branch">git branch</h1>
+
+                                          </section>
+                                          <section>
+                                            <h3>Command</h3><h1 id="git-checkout-my_feature">git checkout my_feature</h1>
+
+                                          </section>
+                                          <section>
+                                            <h3>Welcome Time Traveler</h3><img src="images/btf.jpg">
+                                          </section>
+                                          <section>
+                                            <h1>Checkout</h1><p>You can move files between branches</p>
+<p>Command: <strong>git checkout master -- file</strong></p>
+
+                                          </section>
+                                          <section>
+                                            <h1>Checkout</h1><p>Or just go back to the last time you committed a file</p>
+<p>Command: <strong>git checkout -- file</strong></p>
+
+                                          </section>
+                                          <section>
+                                            <h1>Reset</h1><p>You can remove all of your changes and go back to a clean working copy</p>
+<p>Command: <strong>git reset --hard HEAD</strong></p>
+
+                                          </section>
+                                          <section>
+                                            <h1>Reset</h1><p>Or unstage something you staged with <strong>add</strong></p>
+<p>Command: <strong>git reset file</strong></p>
+
+                                          </section>
+                                          <section>
+                                            <h1>Reset Example</h1><pre><code class="lang-bash">Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+
+    modified:   time_travel.jade
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+</code></pre>
+<p>Command: <strong>git add .</strong></p>
+
+                                          </section>
+                                          <section>
+                                            <h1>Reset Example</h1><pre><code class="lang-bash">Changes to be committed:
+  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
+
+    modified:   time_travel.jade
+
+The-Messengers-MacBook-Pro:git_to_the_future samuraipanzer$ git reset time_travel.jade
+Unstaged changes after reset:
+M   time_travel.jade
+</code></pre>
+<p>Command; <strong>git reset git reset time_travel.jade</strong></p>
+
+                                          </section>
+                                          <section>
+                                            <h1>Reset Example</h1><pre><code class="lang-bash">Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+
+    modified:   time_travel.jade
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+</code></pre>
+
+                                          </section>
+                        </section>
+                        <section>
+                                          <section>
+                                            <h1>Tools</h1><p>What is life without good tools to simplify our activities</p>
+
+                                          </section>
+                                          <section>
+                                            <h1>GUI's</h1><p>Git is a command line utility in the Linux tradition but no one said you have to use the command line.</p>
+<h2 id="don-t-let-anybody-tell-you-how-to-work-">Don&#39;t let anybody tell you how to work.</h2>
+
+                                          </section>
+                                          <section>
+                                            <h3>Git Gui</h3><img src="images/git-gui-stage.jpg"><p>This one is packaged with Git</p>
+
+                                          </section>
+                                          <section>
+                                            <h3>Command</h3><h1 id="git-gui">git gui</h1>
+
+                                          </section>
+                                          <section>
+                                            <h3>Github Desktop</h3><img src="images/branches-popup.png">
+                                          </section>
+                                          <section>
+                                            <h1>And Many More</h1><p><a href="https://git-scm.com/download/gui/win">Other Gui Clients</a></p>
+
+                                          </section>
+                        </section>
+                        <section>
+                                          <section>
+                                            <h1>Collaboration</h1>
+                                          </section>
+                                  <section>
+                                    <h3>Github</h3><img src="images/codercat.jpg" style="width:60%; height:60%;">
+                                  </section>
+                                          <section>
+                                            <h1>GitHub</h1><p>My personal favorite. Great performance and reliable features</p>
+
+                                          </section>
+                                          <section>
+                                            <h1>Features</h1><ul>
+<li>Popularized the PR (Pull Request)</li>
+<li>Popularized Forking</li>
+<li>Popularized Markdown as a documentation style</li>
+<li>Code first</li>
+<li>Its for developers (Unlike Sourceforge)</li>
+</ul>
+
+                                          </section>
+                                          <section>
+                                            <h1>What is a PR</h1><p>A <code>pull request</code> is a method of submitting contributions to an open source project.</p>
+<p>More specifically it allows you to contribute code to a project that you do not own and do not have write access to.</p>
+
+                                          </section>
+                                          <section>
+                                            <h1>Open Source Projects</h1><p>The first step in being a contributor to a Open Source Project is to read their contributor guidelines, look at issues, and open pull requests</p>
+
+                                          </section>
+                                          <section>
+                                            <h3>Step one Fork</h3><img src="images/fork.png">
+                                          </section>
+                                          <section>
+                                            <h3>Step two Clone</h3><p><strong>git clone repo_url</strong></p>
+
+                                          </section>
+                                          <section>
+                                            <h3>Where is the Clone URL</h3><img src="images/clone-url.png">
+                                          </section>
+                                          <section>
+                                            <h3>Step three Make a branch</h3><p><strong>git checkout -b pks/best_feature_evar</strong></p>
+
+                                          </section>
+                                          <section>
+                                            <h3>Step four Commit</h3><p><strong>git add .</strong></p>
+<p><strong>git commit -m&quot;I do great  work&quot;</strong></p>
+
+                                          </section>
+                                          <section>
+                                            <h3>Step five Push</h3><p><strong>git push origin/master</strong></p>
+
+                                          </section>
+                                          <section>
+                                            <h3>Step six Open your Pull Request</h3><p>Back to Github</p>
+
+                                          </section>
+                                          <section>
+                                            <h3>Compare Branches</h3><img src="images/pull-request.png">
+                                          </section>
+                                          <section>
+                                            <h3>Create Pull Request</h3><img src="images/open-pr.png">
+                                          </section>
+                                          <section>
+                                            <h3>Its Alive</h3><img src="images/created-pr.png">
+                                          </section>
+                                          <section>
+                                            <h1>Lets Try It</h1>
+                                          </section>
+                        </section>
+                        <section>
+                                          <section>
+                                            <h1>Avoiding Conflicts</h1><h5 id="by-thinking-ahead">By thinking ahead</h5>
+<h5 id="thanks-soonho-kong">Thanks Soonho Kong</h5>
+<h5 id="-slides-http-www-cs-cmu-edu-soonhok-talks-20140519_git-sec-8-1-"><a href="http://www.cs.cmu.edu/~soonhok/talks/20140519_Git/#/sec-8-1">Slides</a></h5>
+
+                                          </section>
+                                          <section>
+                                            <h1>Merge vs. Rebase</h1>
+                                          </section>
+                                          <section>
+                                            <h3>Merge (Fresh)</h3><img src="images/rebase/rebase_1.svg">
+                                          </section>
+                                          <section>
+                                            <h3>Merge (Doing Work)</h3><img src="images/rebase/rebase_2.svg">
+                                          </section>
+                                          <section>
+                                            <h3>Merge (Push to Remote)</h3><img src="images/rebase/rebase_3.svg">
+                                          </section>
+                                          <section>
+                                            <h1>Merge</h1><pre><code class="lang-bash">$ git push blessed master
+Counting objects: 28, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (9/9), done.
+Writing objects: 100% (9/9), 955 bytes | 0 bytes/s, done.
+Total 9 (delta 6), reused 0 (delta 0)
+To git@github.com:dreal/dreal.git
+ ! [rejected]        master -&gt; master (non-fast-forward)
+error: failed to push some refs to &#39;git@github.com:dreal/dreal.git&#39;
+hint: Updates were rejected because a pushed branch tip is behind its remote
+hint: counterpart. Check out this branch and integrate the remote changes
+hint: (e.g. &#39;git pull ...&#39;) before pushing again.
+hint: See the &#39;Note about fast-forwards&#39; in &#39;git push --help&#39; for details.
+</code></pre>
+
+                                          </section>
+                                          <section>
+                                            <h3>Merge (git fetch –all)</h3><img src="images/rebase/rebase_4.svg">
+                                          </section>
+                                          <section>
+                                            <h3>Merge (git merge origin/master)</h3><img src="images/rebase/rebase_5.svg">
+                                          </section>
+                                          <section>
+                                            <h3>Merge (git merge origin/master)</h3><img src="images/rebase/rebase_6.svg">
+                                          </section>
+                                          <section>
+                                            <h3>Merge Hell</h3><img src="images/rebase/merge_hell1.jpg">
+                                          </section>
+                                          <section>
+                                            <h3>Merge Hell!</h3><img src="images/rebase/merge_hell2.png">
+                                          </section>
+                                          <section>
+                                            <h3>Merge Hell!!!</h3><img src="images/rebase/wide-gitk.gif">
+                                          </section>
+                          <!--Rebase-->
+                                          <section>
+                                            <h3>Rebase (git fetch -all)</h3><img src="images/rebase/rebase_4.svg">
+                                          </section>
+                                          <section>
+                                            <h3>Rebase (git rebase origin/master)</h3><img src="images/rebase/rebase_7.svg">
+                                          </section>
+                                          <section>
+                                            <h3>Rebase (git push origin master)</h3><img src="images/rebase/rebase_8.svg">
+                                          </section>
+                                          <section>
+                                            <h1>Always try to Rebase over merge</h1><ul>
+<li>Rebase keeps the commits linear</li>
+<li>Merge should show checkpoints when features are completed (Merge PR)</li>
+</ul>
+
+                                          </section>
+                        </section>
+                        <section>
+                                          <section>
+                                            <h1>My Recipes</h1>
+                                          </section>
+                                          <section>
+                                            <h1>New Project</h1><ul>
+<li>Make a new folder on your computer and start working</li>
+<li>When something builds initialize your repo<ul>
+<li>git init</li>
+<li>git add .</li>
+<li>git commit -m &quot;Starting working on awesome project&quot;</li>
+</ul>
+</li>
+<li>Go to Github and click new repo</li>
+<li>Do not initialize with a Readme</li>
+<li>Copy the second block of git commands</li>
+<li>Paste them into your terminal</li>
+<li>Party!</li>
+</ul>
+
+                                          </section>
+                                          <section>
+                                            <h1>Try It!</h1>
+                                          </section>
+                                          <section>
+                                            <h1>Existing Project</h1><ul>
+<li>Check to make sure your branch is in sync<ul>
+<li>git fetch</li>
+<li>git status</li>
+</ul>
+</li>
+</ul>
+<p>If you see this you can move on</p>
+<pre><code>Your branch is up-to-date with &#39;origin/master&#39;.
+</code></pre>
+                                          </section>
+                                          <section>
+                                            <h1>Existing Project</h1><p>If you didn&#39;t then we sync up</p>
+<pre><code>Your branch is ahead of &#39;origin/master&#39; by 1 commit.
+</code></pre><pre><code>Your branch is behind &#39;origin/master&#39; by 1 commit.
+</code></pre>
+                                          </section>
+                                          <section>
+                                            <h3>Are all of your files committed</h3><pre><code>Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+
+    modified:   index.jade
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+
+    my_recipe.jade
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+</code></pre>
+                                          </section>
+                                          <section>
+                                            <h1>Clean working copy</h1><pre><code>On branch master
+Your branch is up-to-date with &#39;origin/master&#39;.
+nothing to commit, working directory clean
+</code></pre>
+                                          </section>
+                                          <section>
+                                            <h1>Ahead?</h1><p>You should have push last time you worked (I am very disappointed)</p>
+<p>Command: <strong>git push origin master</strong></p>
+
+                                          </section>
+                                          <section>
+                                            <h1>Behind?</h1><p>There are changes on the remote that you do not have</p>
+<p>Command: <strong>git pull</strong></p>
+
+                                          </section>
+                                          <section>
+                                            <h1>Pull before you push</h1><p>It is possible that you have diverged enough that you are both ahead and behind
+in this case you should always pull before you push</p>
+
+                                          </section>
+                                          <section>
+                                            <h1>Make Changes</h1><ul>
+<li>git add .</li>
+<li>git commit -m &quot;added badass feature that you will all love&quot;</li>
+</ul>
+
+                                          </section>
+                                          <section>
+                                            <h1>Push it</h1><ul>
+<li>git push origin master</li>
+</ul>
+
+                                          </section>
+                                          <section>
+                                            <h3>Real Good</h3><img src="images/push-it.png">
+                                          </section>
+                        </section>
+                        <section>
+                          <h1></h1>
+                          <h3></h3>
+                          <p>
+                            <div class="left"><small>Paul Scarrone</small></div>
+                            <div class="left"><small class="twitter">@PaulSCoder</small></div>
+                            <div class="left"><small class="email">paul.scarrone@gmail.com</small></div>
+                          </p>
+                          <aside class="notes">Title Slide</aside>
+                        </section>
+      </div>
+    </div>
+    <script type="text/javascript" src="bower_components/reveal.js/lib/js/head.min.js"></script>
+    <script type="text/javascript" src="bower_components/reveal.js/js/reveal.js"></script>
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+       Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        theme: 'moon',
+        slideNumber: true,
+        transition: 'concave',
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: revealLocation + 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: revealLocation + 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: revealLocation + 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: revealLocation + 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: revealLocation + 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+       });
+    </script>
+  </body>
+</html>
