@@ -39,9 +39,33 @@ include ./shared/slide_mixins
   +bigTitleSlide("Are all of your files committed")
     include:markdown code/dirty_working_copy.md
 
+  +bigTitleSlide("Clean working copy")
+    include:markdown code/clean_working_copy.md
+
   +bigTitleSlide("Ahead?")
     :markdown
-      You should push last time your worked (I am very disappointed)
+      You should have push last time your worked (I am very disappointed)
+
+      Command: __git push origin master__
 
   +bigTitleSlide("Behind?")
     :markdown
+      There are changes on the remote that you do not have
+
+      Command: __git pull__
+
+  +bigTitleSlide("Pull before you push")
+    :markdown
+      It is possible that you have diverged enough that you are both ahead and behind
+      in this case you should always pull before you push
+
+  +bigTitleSlide("Make Changes")
+    :markdown
+      - git add .
+      - git commit -m "added badass feature that you will all love"
+
+  +bigTitleSlide("Push it")
+    :markdown
+      - git push origin master
+
+  +imageSlide("Real Good", "images/push-it.png")

@@ -59,4 +59,26 @@ include ./shared/slide_mixins
 
   +imageSlide("Welcome Time Traveler", "images/btf.jpg")
 
-  +bigTitleSlide("")
+  +bigTitleSlide("Checkout")
+    :markdown
+      You can move files between branches
+
+      Command: __git checkout master -- file__
+
+  +bigTitleSlide("Checkout")
+    :markdown
+      Or just go back to the last time you committed a file
+
+      Command: __git checkout -- file__
+
+  +bigTitleSlide("Reset")
+    :markdown
+      You can remove all of your changes and go back to a clean working copy
+
+      Command: __git reset --hard HEAD__
+
+  +bigTitleSlide("Reset")
+    :markdown
+      Or unstage something you staged with __add__
+
+      Command: __git reset file__
