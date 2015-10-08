@@ -31,11 +31,29 @@ include ./shared/slide_mixins
 
   +imageSlide("Step one Fork", "images/fork.png")
 
-  +littleTitleSlide("Step two Make a branch")
+  +littleTitleSlide("Step two Clone")
+    :markdown
+      __git clone repo_url__
 
-  +littleTitleSlide("Step three Commit")
+  +imageSlide("Where is the Clone URL", "images/clone-url.png")
+
+  +littleTitleSlide("Step three Make a branch")
+    :markdown
+      __git checkout -b pks/best_feature_evar__
+
+  +littleTitleSlide("Step four Commit")
+    :markdown
+      __git add .__
+
+      __git commit -m"I do great  work"__
 
   +littleTitleSlide("Step four Open your Pull Request")
+    :markdown
+      Back to Github
+
+  +imageSlide("Compare Branches", "images/pull-request.png")
+  +imageSlide("Create Pull Request", "images/open-pr.png")
+  +imageSlide("Compare Branches", "images/created-pr.png")
 
 
 
