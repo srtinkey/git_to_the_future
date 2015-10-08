@@ -1,0 +1,33 @@
+include ./shared/slide_mixins
+
++slideGroup
+  +bigTitleSlide("Avoiding Conflicts")
+    :markdown
+      ##### Thanks Soonho Kong
+      ##### [Slides](http://www.cs.cmu.edu/~soonhok/talks/20140519_Git/#/sec-8-1)
+
+  +bigTitleSlide("Merge vs. Rebase")
+
+  +imageSlide("Merge (Fresh)", "images/rebase/rebase_1.svg")
+  +imageSlide("Merge (Doing Work)", "images/rebase/rebase_2.svg")
+  +imageSlide("Merge (Push to Remote)", "images/rebase/rebase_3.svg")
+
+  +bigTitleSlide("Merge")
+    include:markdown code/non-fast-forward.md
+
+  +imageSlide("Merge (git fetch –all)", "images/rebase/rebase_4.svg")
+  +imageSlide("Merge (git merge origin/master)", "images/rebase/rebase_5.svg")
+  +imageSlide("Merge (git merge origin/master)", "images/rebase/rebase_6.svg")
+  +imageSlide("Merge Hell", "images/rebase/merge_hell1.jpg")
+  +imageSlide("Merge Hell!", "images/rebase/merge_hell2.png")
+  +imageSlide("Merge Hell!!!", "images/rebase/wide-gitk.gif")
+
+  //Rebase
+  +imageSlide("Rebase (git fetch -all)", "images/rebase/rebase_4.svg")
+  +imageSlide("Rebase (git rebase origin/master)", "images/rebase/rebase_7.svg")
+  +imageSlide("Rebase (git push origin master)", "images/rebase/rebase_8.svg")
+
+  +bigTitleSlide("Always try to Rebase over merge")
+    :markdown
+      - Rebase keeps the commits linear
+      - Merge should show checkpoints when features are completed (Merge PR)

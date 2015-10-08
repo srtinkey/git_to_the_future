@@ -37,12 +37,24 @@ include ./shared/slide_mixins
 
       Command: __git add &lt;file or directory&gt;__
 
+  +littleTitleSlide("Command")
+    :markdown
+      # git add src/save.rb
+
+  +littleTitleSlide("Common Command")
+    :markdown
+      # git add .
+
   +bigTitleSlide("Commit")
     :markdown
       Commits tell a story so they require a __message__ and a series of messages
       makes a __history__
 
-      Command: __git commit -m"&lt;What you changed&gt;"
+      Command: __git commit -m"&lt;What you changed&gt;"__
+
+  +littleTitleSlide("Command")
+    :markdown
+      # git commit -m"Added awesome feature that saved mankind"
 
   +littleTitleSlide("History")
     :markdown
@@ -64,6 +76,10 @@ include ./shared/slide_mixins
     +speakerNotes
       :markdown
         What are branches really. They are folders that you can switch between safely
+
+  +littleTitleSlide("Command")
+    :markdown
+      # git checkout -b pks/save_world
 
   +bigTitleSlide("Lets give it a try")
     :markdown

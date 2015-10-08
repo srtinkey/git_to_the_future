@@ -1,5 +1,5 @@
 - var revealLocation = 'bower_components/reveal.js/'
-- var titleData = { title: "Git To The Future", subtitle: "", author: "Paul Scarrone", twitter: "@PaulSCoder", email: "paul.scarrone@gmail.com" }
+- var titleData = { title: "", subtitle: "", author: "Paul Scarrone", twitter: "@PaulSCoder", email: "paul.scarrone@gmail.com" }
 doctype html
 html(lang="en")
 
@@ -14,6 +14,7 @@ html(lang="en")
   body
     .reveal
       .slides
+        +imageSlide("", "images/git-to-the-future-delorean-small.png")
         +titleSlide(titleData)
         +bigTitleSlide("Goals")
           :markdown
@@ -30,7 +31,7 @@ html(lang="en")
         +bigTitleSlide("Installing Git")
             :markdown
               - Windows - https://git-scm.com/download/win
-              - OSX - Built-in
+              - OSX - Built-in (Xcode and Command Line Tools)
               - Linux - through your package manager if not built-in
 
         +slideGroup
@@ -67,8 +68,7 @@ html(lang="en")
         +slideGroup
           +bigTitleSlide("Collaboration")
 
-        +slideGroup
-          +bigTitleSlide("Avoiding Conflicts")
+        include avoid_conflicts
 
 
     include ./shared/footer
