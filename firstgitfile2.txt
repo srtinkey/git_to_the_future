@@ -1,0 +1,8 @@
+This is a text file for learning git
+
+git init
+git status								use at any time
+create a file, put in directory created for project
+git add <filename>						stages <filename> for a commit
+git commit -m "notes on filename"		adds notes to whatever is staged to commit
+git log									shows activity
